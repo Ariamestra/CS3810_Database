@@ -1,0 +1,16 @@
+erdiagram Practice2
+notation= crowsfoot
+
+entity Items{}
+
+entity Sales{}
+
+entity Salers{}
+
+relationship made_of{
+    Sales[0..N]->Items[N]
+}
+
+relationship done_by{
+     Sales[0..N] -> Salers[1]
+}

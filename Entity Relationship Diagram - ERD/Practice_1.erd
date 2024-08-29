@@ -1,0 +1,16 @@
+erdiagram Practice1
+notation = crowsfoot
+
+entity Employees{}
+
+entity Departments{}
+
+entity Dependents {}
+
+relationship works {
+    Employees [0..1] -> Departments[0..1]
+}
+
+relationship has {
+    Employees[1]-> Dependents[0..N]
+}

@@ -1,0 +1,55 @@
+erdiagram hwk_02
+notation=crowsfoot
+
+entity Customers {
+    email key
+    name 
+    dateofbirth
+    weight
+    height
+}
+
+entity PersonalCards {
+    timestamp
+    type // entry or exit
+    
+}
+
+relationship has {
+    Customers[1] -> PersonalCards[0..N]
+}
+
+//-----------------------------------------------------------------
+
+entity Students {
+    name
+    studentID key
+}
+
+entity Courses {
+    title
+    courseID key
+}
+
+entity Assignments {
+    title 
+    number
+    type
+    grade // 0-10
+}
+
+entity Assessments {
+    title
+    number
+    type //quiz, homework, project, exam
+    grade
+}
+
+relationship enrolls {
+    Students[0..N] -> Courses[0..N]
+}
+
+
+relationship has_many {
+    Courses[1] -> Assignments[0..N] -> Assessments[0..N]
+}

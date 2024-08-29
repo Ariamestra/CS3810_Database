@@ -1,0 +1,9 @@
+--------------Part B-----------------
+
+Recipes (number*:int, name:string, description:string)
+Tags (description*:string)
+Ingredients (code*:int, name:string, description:string)
+Steps (recipe_number*:int, seq*:int, description:string)
+
+RecipeTags (recipe_number*:int, tag_description*:string)
+Quantities (recipe_number*:int, ingredient_code*:int, quantity:float)

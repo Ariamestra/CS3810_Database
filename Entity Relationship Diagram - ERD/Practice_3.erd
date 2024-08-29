@@ -1,0 +1,22 @@
+erdiagram Practice3
+notation= crowsfoot
+
+entity Sections{}
+
+entity Students{}
+
+entity Courses{}
+
+entity Instructors{}
+
+relationship enrolls{
+    Students[0..N]-> Sections[0..N]
+}
+
+relationship has{
+    Courses[1]->Sections[0..N]
+}
+
+relationship teach{
+    Instructors[0..1]->Courses[0..N]
+}

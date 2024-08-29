@@ -1,0 +1,33 @@
+erdiagram Practice4
+notation= crowsfoot
+
+entity Products {
+    number
+    description 
+    price
+}
+
+entity Items {
+    quantity
+}
+
+entity Customers {
+    name
+}
+
+entity Orders {
+    IDnum
+    address 
+}
+
+relationship based_on { 
+    Items[0..N] -> Products[1]
+}
+
+relationship has {
+    Orders[1] -> Items[N]
+}
+
+relationship place {
+    Customers[1] -> Orders[0..N]
+}

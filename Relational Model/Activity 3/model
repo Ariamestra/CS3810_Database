@@ -1,0 +1,5 @@
+Employees (id*:int, name:string, sex:int, wage:float, supervisor_id:int)
+
+Supervisors (id*:int, salary:float)
+
+Working_Hours (employee_id*:int, start*:string, end:string, date*:sting, supervisor_id:int, status:string)

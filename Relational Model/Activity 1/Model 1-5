@@ -1,0 +1,22 @@
+------------Practice1-------------------
+Students (id*:int, name:string)
+Courses (number*:int, title:string)
+Enrollments (id*:int, number*:int)
+
+-------------Practice2------------------
+Buildings (name*:string, address:string)
+Rooms (floor*:int, room_number*:int, name*:string)
+
+-------------Practice3------------------
+Candidates (ssn*:int, name:string)
+JobPositions (number*:int, title:string, department:string)
+Applicants (ssn*:int, number*:int)
+
+-------------Practice4------------------
+Employees (ssn*:int, name:string)
+Projects (number*:int, title:string)
+Contributers(ssn*:int, number*:int, hours:int)
+
+-------------Practice5------------------*******
+Shippings (order_number*:int, address:string)
+Items (order_number*:int, seq_number*:int, description:string)

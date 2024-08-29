@@ -1,0 +1,46 @@
+erdiagram reviews
+notation=crowsfoot
+
+entity Papers  { 
+    id key
+    title 
+    abstract 
+    name
+}
+
+entity Authors { 
+    email key
+    first_name
+    last_name
+}
+
+entity Reviewers { 
+    email key
+    first_name
+    last_name
+    phone_number
+    affiliation
+    topics
+}
+
+// Paper may have multiple authors
+relationship writtenBy {
+    Papers[1] -> Authors[N] 
+}
+
+// Paper has one contact author
+relationship contactAuthor {
+    Papers[1] -> Authors[1] 
+}
+
+// Each paper has ...
+relationship assigned {
+    Papers[N] -> Reviewers[N | "2-4"] 
+    technical_merit_score //1-10
+    readability_score //1-10
+    originality_score //1-10
+    relevance_score//1-10
+    recommendation_rating //"strong accept", "accept", "weak accept", "borderline", "weak reject", "reject", or "strong reject"
+    review_committee_comments //Comments within committee
+    author_comments //Feedback to authors
+}

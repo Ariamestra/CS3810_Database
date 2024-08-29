@@ -1,0 +1,19 @@
+Customers (email*:string, name:string, address:string, phone:string, credit_card:string)
+
+Seats (customers_email*:string, seat_number*:int, status:string, sector_number*:int)
+
+Sectors (sector_number*:int, seats:int, venue_id*:int)
+
+Venues (id*:int, name:string)
+
+Events (code*:int, title:string, season:string, year:int, venue_id:int)
+
+EventDays (customer_email*:string, events_code*:int, date*:int, time*:string) // Time string or int
+
+------------------------------------------------------------
+
+Purchases (customers_email*:string, seat_number*:int, eventday_date*:int, eventday_time*:string)
+// Unsure about: customers_email*:string and extra
+
+Prices (sector_number*:int, eventday_date*:int, eventday_time*:string)
+// Unsure if extra
