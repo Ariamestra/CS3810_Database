@@ -1,0 +1,113 @@
+# Example 1
+
+Consider the following relation to answer the questions that follows. 
+
+![pic1.png](pics/pic1.png)
+
+a) The relation is NOT in 1NF. Why? 
+No, because it has multiple phone numbers for every branch address and branch number.
+ 
+b) Normalize the relation to 1NF. 
+|  branchNo |    branchAdresss      |    teslNos   |   
+|-----------|-----------------------|--------------|
+|   B001    | 8 Jeffferson Way      | 503-555-3618 |   
+|   B001    | 8 Jeffferson Way      | 503-555-2727 |   
+|   B001    | 8 Jeffferson Way      | 503-555-6534 |   
+|   B002    | City Center Plaza, 800| 205-555-7473 |   
+|   B002    | City Center Plaza, 800| 205-495-3456 |   
+|   B003    |  14th Ave, 131        | 212-371-300  |   
+|   B004    |  14th Ave, 250        | 206-555-1212 |   
+|   B004    |  14th Ave, 250        | 206-456-3333 |   
+
+# Example 2
+
+Consider the following relation to answer the questions that follows. 
+
+![pic2.png](pics/pic2.png)
+
+a) The relation is NOT in 2NF. Why? 
+No because ir could be 3 tables staff, branch and staff/branch number 
+
+| staffNo | name | position |
+
+| brachNo | branchAddress | 
+
+|staffNo | branchNo | hoursperweek |
+ 
+b) Normalize the relation to 2NF, showing the (partial) functional dependencies to the key. 
+
+Staff(staffNo*, name, position) 
+Branches (branchNo*, branchAddresss)
+StaffBranches (staffNo*, branchNo*, hoursperweek)
+
+# Example 3
+
+Consider the following relation to answer the questions that follows. 
+
+![pic3.png](pics/pic3.png)
+
+a) Normalize the relation to 1NF. 
+Break procedure into 2 columns.
+|  petID  |  petName | petType  |  petAge |  Owner |   visitDate | ProcedureID |       Procedure      | 
+|---------|----------|----------|---------|--------|-------------|-------------|----------------------|
+|   246   |  Rover   |    Dog   |   12    |   Sam  | Jan 13/2002 |      01     |  Rabies Vaccination  |
+|   246   |  Rover   |    Dog   |   12    |   Sam  | Mar 27/2002 |      10     |  Exam/Treatment Wound|
+|   246   |  Rover   |    Dog   |   12    |   Sam  | Apr 02/2002 |      05     |  Heat worm test      |
+|   298   |  Spot    |    Dog   |    2    |  Terry | Jan 21/2002 |      08     |  Tetanus Vaccination |
+|   298   |  Spot    |    Dog   |    2    |  Terry | Mar 10/2002 |      05     |  Heat worm test      |
+|   341   |  Morris  |    Cat   |    4    |    Sam | Jan 23/2002 |      01     |  Rabies Vaccination  |
+|   341   |  Morris  |    Cat   |    4    |    Sam | Jan 13/2002 |      01     |  Rabies Vaccination  |
+|   519   |  Tweedy  |   Bird   |    2    |  Terry | Apr 30/2002 |      20     |  Annual checkup      |
+|   519   |  Tweedy  |   Bird   |    2    |  Terry | Apr 30/2002 |      10     |  Eye wash            |
+
+b) Normalize the relation to 2NF. 
+Key is petID, visitDate, procedureID
+
+| petID | petName | petType | petAge | Owner
+
+| ProcedureId | Procedure |
+
+| petID | ProcedureId | visitDate |
+
+Pets(petID*, petName, petType, petAge, owner)
+Procedures(ProcedureID*, Procedure)
+VetVisit(petID*, ProcedureID*, visitDate*)
+
+# Example 4
+
+Consider the following invoice.
+
+![pic4.png](pics/pic4.png)
+
+From the invoice, we can derive the following unnormalized (UNF) relation: 	
+
+![pic5.png](pics/pic5.png)
+
+Normalize the invoice relation to 3NF.  Assume, based on the previous exercise, that each pet can be uniquely identified by an ID and that each procedure also has an unique ID. Also, consider adding an ID to uniquely identify a customer, pet and procedure. 
+|num|date|custName|custAddr|custCity|custState|custZipcode|petName|description|amt|
+|---|---|---|---|---|---|---|---|---|---|
+|987|Jan 13/2002|Richard Cook|123 This st.|Ontario|Z5Z|6G6|Rover|Rabies Vaccinations|30|
+|987|Jan 13/2002|Richard Cook|123 This st.|Ontario|Z5Z|6G6|Morris|Rabies Vaccinations|24|
+
+Key = num and pet name and description
+
+'''
+2NF
+
+Key is {num, petName, description}
+num -> date, custName, custAddress, custCity, custState, custZipcode
+
+Invoices (num*, date, custName, custAddress, custCity, custState, custZipcode)
+InvoiceDetails (num*, petName*, description*)
+'''
+
+'''
+3NF
+custname -> custAddress, custCity, custState, custZipcode
+Customers (custName*, custAddress, custCity, custState, custZipcode)
+
+Customers (custName*, custAddress, custCity, custState, custZipcode)
+Invoices (num*, date, custName)
+InvoiceDetails (num*, petName*, description*)
+
+'''
